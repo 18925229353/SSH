@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.szxs.entity.House" table="house" dynamic-update="true">
+        <id name="id">
+            <generator class="identity"></generator>
+        </id>
+        <property name="contact" column="contact"/>
+        <property name="description" column="description"/>
+        <property name="title" column="title"/>
+        <property name="price" column="price"/>
+        <property name="pubDate" column="pubDate"/>
+        <property name="floorage" column="floorage"/>
+        <property name="typeId" column="type_Id"/>
+        <property name="houseImg" column="house_img"/>
+        <many-to-one name="users" column="user_Id" class="com.szxs.entity.Users" lazy="false"/>
+        <many-to-one name="street" column="street_Id" class="com.szxs.entity.Street"/>
+
+    </class>
+
+</hibernate-mapping>

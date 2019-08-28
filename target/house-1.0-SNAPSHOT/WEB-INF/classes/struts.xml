@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">-->
+<struts>
+    <package name="UserPackage" extends="struts-default" namespace="/">
+        <interceptors>
+            <interceptor name="myInterceptor" class="com.szxs.interceptor.MyInterceptor"/>
+            <interceptor-stack name="mystack">
+                <interceptor-ref name="myInterceptor"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="mystack"/>
+    <global-results>
+        <result name="input">page/error.jsp/</result>
+        <result name="login">page/login_struts2.jsp</result>
+    </global-results>
+
+    <action name="login" class="com.szxs.action.UserAction" method="loginUser">
+        <result name="success" type="redirectAction">showListHouse</result>
+    </action>
+        <action name="*House" class="com.szxs.action.HouseAction" method="{1}House">
+            <result name="success">page/house_list.jsp</result>
+            <result name="toHouseList" type="redirectAction">showListHouse</result>
+            <result name="add">page/add.jsp</result>
+        </action>
+        <action name="*User" class="com.szxs.action.UserAction" method="{1}User">
+            <result name="success" type="redirect">page/{1}_success.jsp</result>
+            <result name="error">page/register.jsp</result>
+        </action>
+
+    </package>
+
+</struts>

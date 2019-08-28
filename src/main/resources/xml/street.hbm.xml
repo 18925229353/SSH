@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.szxs.entity.Street" table="street" dynamic-update="true">
+        <id name="id">
+            <generator class="identity"/>
+        </id>
+        <property name="name" column="name"/>
+       <many-to-one name="district" column="district_Id" class="com.szxs.entity.District" cascade="save-update"/>
+        <set name="houseSet">
+            <key column="street_Id"/>
+            <one-to-many class="com.szxs.entity.House"/>
+        </set>
+    </class>
+</hibernate-mapping>
