@@ -11,7 +11,7 @@
   <version>1.0-SNAPSHOT</version>
   <properties>
     <spring-framework.version>4.1.5.RELEASE</spring-framework.version>
-    <hibernate-version>4.1.12.Final</hibernate-version>
+    <hibernate-version>5.3.20.Final</hibernate-version>
     <struts.version>2.1.6</struts.version>
   </properties>
 
